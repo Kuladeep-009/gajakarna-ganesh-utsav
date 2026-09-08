@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Background aura gradients -->
+    <radialGradient id="auraGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF9C4" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#FFE082" stop-opacity="0.6"/>
+      <stop offset="80%" stop-color="#FFA000" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#FF6F00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="30%" stop-color="#FFCA28"/>
+      <stop offset="70%" stop-color="#FFB300"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </linearGradient>
+    <linearGradient id="saffronGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7043"/>
+      <stop offset="50%" stop-color="#F4511E"/>
+      <stop offset="100%" stop-color="#D84315"/>
+    </linearGradient>
+    <linearGradient id="maroonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C2185B"/>
+      <stop offset="100%" stop-color="#880E4F"/>
+    </linearGradient>
+    <linearGradient id="tilakGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF1744"/>
+      <stop offset="50%" stop-color="#D50000"/>
+      <stop offset="100%" stop-color="#B71C1C"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Aura / Halo Circle -->
+  <circle cx="250" cy="250" r="230" fill="url(#auraGrad)"/>
+  
+  <!-- Outer Sunrays Decorative Ring -->
+  <g stroke="url(#goldGrad)" stroke-width="2" opacity="0.4" stroke-dasharray="4,8">
+    <circle cx="250" cy="250" r="215" fill="none"/>
+    <circle cx="250" cy="250" r="195" fill="none"/>
+  </g>
+
+  <!-- Mukut / Crown -->
+  <path d="M190,165 L250,70 L310,165 Q250,180 190,165 Z" fill="url(#goldGrad)" stroke="#B71C1C" stroke-width="2"/>
+  <path d="M220,135 L250,90 L280,135 Z" fill="url(#saffronGrad)"/>
+  <circle cx="250" cy="85" r="7" fill="#D50000"/>
+  <!-- Crown Ornaments -->
+  <circle cx="215" cy="155" r="4" fill="#D50000"/>
+  <circle cx="250" cy="158" r="6" fill="#D50000"/>
+  <circle cx="285" cy="155" r="4" fill="#D50000"/>
+  <path d="M235,115 Q250,105 265,115" fill="none" stroke="#FFF" stroke-width="2"/>
+
+  <!-- Large Left Ear -->
+  <path d="M190,185 C140,160 80,180 95,240 C105,280 150,290 185,275 C195,270 195,200 190,185 Z" fill="url(#goldGrad)" stroke="#E65100" stroke-width="3"/>
+  <path d="M175,205 C140,190 115,205 120,240 C125,265 155,270 175,255" fill="none" stroke="#E65100" stroke-width="2" opacity="0.6"/>
+
+  <!-- Large Right Ear -->
+  <path d="M310,185 C360,160 420,180 405,240 C395,280 350,290 315,275 C305,270 305,200 310,185 Z" fill="url(#goldGrad)" stroke="#E65100" stroke-width="3"/>
+  <path d="M325,205 C360,190 385,205 380,240 C375,265 345,270 325,255" fill="none" stroke="#E65100" stroke-width="2" opacity="0.6"/>
+
+  <!-- Head / Face base -->
+  <ellipse cx="250" cy="230" rx="65" ry="60" fill="url(#goldGrad)"/>
+
+  <!-- Auspicious Trishul Tilak on Forehead -->
+  <g id="tilak">
+    <!-- Center Vermilion Vertical Line -->
+    <path d="M246,170 C246,165 254,165 254,170 L253,225 C253,228 247,228 247,225 Z" fill="url(#tilakGrad)"/>
+    <!-- Crescent Chandrabindu / Base -->
+    <path d="M232,195 Q250,208 268,195 Q250,202 232,195 Z" fill="#D50000"/>
+    <path d="M230,185 Q250,198 270,185 Q250,192 230,185 Z" fill="#FFE082" stroke="#FF8F00" stroke-width="1.5"/>
+    <circle cx="250" cy="218" r="4.5" fill="#FFE082"/>
+  </g>
+
+  <!-- Left Eye -->
+  <path d="M210,215 Q223,210 232,220 Q220,225 210,215 Z" fill="#3E2723"/>
+  <circle cx="223" cy="217" r="1.5" fill="#FFF"/>
+
+  <!-- Right Eye -->
+  <path d="M290,215 Q277,210 268,220 Q280,225 290,215 Z" fill="#3E2723"/>
+  <circle cx="277" cy="217" r="1.5" fill="#FFF"/>
+
+  <!-- Tusk Left (Broken Tusk / Ekadanta) -->
+  <path d="M215,260 L200,268 L210,273 Z" fill="#FFFFFF" stroke="#B0BEC5" stroke-width="1"/>
+
+  <!-- Tusk Right (Full Tusk) -->
+  <path d="M285,260 Q305,275 300,290 Q290,280 282,272 Z" fill="#FFFFFF" stroke="#B0BEC5" stroke-width="1"/>
+
+  <!-- Majestic Trunk -->
+  <path d="M238,245 C238,275 220,310 210,340 C200,370 215,400 245,405 C275,410 295,385 290,360 C286,340 268,340 265,355 C262,370 250,375 238,365 C228,355 235,325 245,295 C255,275 262,255 262,245 Z" 
+        fill="url(#goldGrad)" stroke="#E65100" stroke-width="2.5"/>
+  
+  <!-- Trunk Horizontal Lines / Ripples -->
+  <path d="M232,275 Q245,278 258,275" fill="none" stroke="#BF360C" stroke-width="2"/>
+  <path d="M226,300 Q240,303 252,298" fill="none" stroke="#BF360C" stroke-width="2"/>
+  <path d="M218,325 Q230,328 244,323" fill="none" stroke="#BF360C" stroke-width="2"/>
+  <path d="M215,350 Q225,355 238,348" fill="none" stroke="#BF360C" stroke-width="2"/>
+
+  <!-- Auspicious Modak on Trunk Tip -->
+  <g id="modak" transform="translate(270, 345)">
+    <path d="M5,15 Q-10,15 -8,0 Q-5,-12 5,-20 Q15,-12 18,0 Q20,15 5,15 Z" fill="url(#saffronGrad)" stroke="#FFD54F" stroke-width="1.5"/>
+    <path d="M5,-20 L5,14" fill="none" stroke="#FFD54F" stroke-width="1" opacity="0.6"/>
+    <path d="M-2,-5 Q5,5 12,-5" fill="none" stroke="#FFD54F" stroke-width="1" opacity="0.6"/>
+  </g>
+
+  <!-- Shawl / Angavastram & Dhoti Accent -->
+  <path d="M150,340 Q250,440 350,340 Q380,410 370,450 Q250,490 130,450 Q120,410 150,340 Z" fill="url(#maroonGrad)" opacity="0.85"/>
+  <path d="M170,360 Q250,440 330,360" fill="none" stroke="url(#goldGrad)" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- Lower Kundalini / Lotus Petals Base -->
+  <g fill="url(#saffronGrad)" stroke="#FFE082" stroke-width="1.5" opacity="0.9">
+    <path d="M250,475 Q235,445 220,455 Q205,465 250,490 Q295,465 280,455 Q265,445 250,475 Z"/>
+    <path d="M190,460 Q175,435 160,445 Q150,455 190,475 Q210,465 190,460 Z"/>
+    <path d="M310,460 Q325,435 340,445 Q350,455 310,475 Q290,465 310,460 Z"/>
+  </g>
+  
+  <!-- Blessings Glow Stars -->
+  <circle cx="150" cy="140" r="3" fill="#FFF" opacity="0.8" filter="url(#glow)"/>
+  <circle cx="350" cy="140" r="3" fill="#FFF" opacity="0.8" filter="url(#glow)"/>
+  <circle cx="250" cy="50" r="4" fill="#FFD54F" filter="url(#glow)"/>
+</svg>

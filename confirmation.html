@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Confirmation | Team Gajakarna Ganesh Utsav 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/ganesha.svg">
+</head>
+<body>
+
+  <!-- Auspicious Top Shloka Bar -->
+  <div class="top-shloka-bar">
+    <img src="assets/diya.svg" alt="Diya" style="width: 20px; height: 20px;">
+    <span class="shloka-text">॥ शुभं करोति कल्याणमारोग्यं धनसंपदा । शत्रुबुद्धिविनाशाय दीपज्योतिर्नमोऽस्तुते ॥</span>
+    <img src="assets/diya.svg" alt="Diya" style="width: 20px; height: 20px;">
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/ganesha.svg" alt="Team Gajakarna Logo" class="brand-icon">
+        <div class="brand-text">
+          <h1>TEAM GAJAKARNA</h1>
+          <span>Ganesh Utsav 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="donate.html">Donate / QR</a></li>
+        <li><a href="confirmation.html" class="active">Confirmation</a></li>
+        <li><a href="index.html#donor-wall">Donor Wall</a></li>
+        <li><a href="login.html" style="font-size: 0.88rem; color: var(--text-muted);">🔐 Admin</a></li>
+      </ul>
+
+      <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    </div>
+
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="index.html">🏠 Home</a>
+      <a href="donate.html">💰 Donate / QR</a>
+      <a href="confirmation.html" style="color: var(--primary); font-weight: 700;">📝 Submit Confirmation</a>
+      <a href="login.html">🔐 Admin Portal</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-header" style="margin-bottom: 24px;">
+      <span class="section-tag">Verification Form</span>
+      <h2 class="section-title">Payment Confirmation</h2>
+      <p class="section-subtitle">
+        Enter your transaction details below to verify your donation and receive your digital committee receipt.
+      </p>
+    </div>
+
+    <!-- Confirmation Form Card -->
+    <div class="form-wrapper-card">
+      <form id="donation-confirm-form">
+        
+        <div class="form-row-2">
+          <!-- Donor Name -->
+          <div class="form-group">
+            <label for="confirm-name" class="form-label">Donor Full Name <span class="req">*</span></label>
+            <input type="text" id="confirm-name" class="form-control" placeholder="e.g. Ramesh Patil" required>
+          </div>
+
+          <!-- Mobile Number -->
+          <div class="form-group">
+            <label for="confirm-mobile" class="form-label">Mobile Number <span class="req">*</span></label>
+            <input type="tel" id="confirm-mobile" class="form-control" placeholder="10-digit mobile number" maxlength="10" pattern="[6-9][0-9]{9}" required>
+            <small style="color: var(--text-muted); font-size: 0.78rem;">For WhatsApp receipt acknowledgment</small>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <!-- Donation Amount -->
+          <div class="form-group">
+            <label for="confirm-amount" class="form-label">Donation Amount (₹) <span class="req">*</span></label>
+            <input type="number" id="confirm-amount" class="form-control" placeholder="e.g. 501" min="1" required>
+          </div>
+
+          <!-- Seva Category -->
+          <div class="form-group">
+            <label for="confirm-category" class="form-label">Seva / Purpose</label>
+            <select id="confirm-category" class="form-control">
+              <option value="General Utsav">General Utsav Donation</option>
+              <option value="Mahaprasad Seva">Mahaprasad & Annadan Seva</option>
+              <option value="Flower Decoration">Flower & Mandal Decoration</option>
+              <option value="Aarti Sponsorship">Daily Aarti Sponsorship</option>
+              <option value="Cultural Programs">Cultural Programs & Youth Seva</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <!-- UTR Number -->
+          <div class="form-group">
+            <label for="confirm-utr" class="form-label">Transaction ID / UTR Number <span class="req">*</span></label>
+            <input type="text" id="confirm-utr" class="form-control" placeholder="12-digit UPI reference number" required>
+            <small style="color: var(--text-muted); font-size: 0.78rem;">Visible in your GPay / PhonePe / Paytm transaction receipt</small>
+          </div>
+
+          <!-- Payment Date & Time -->
+          <div class="form-group">
+            <label for="confirm-date" class="form-label">Payment Date & Time</label>
+            <input type="datetime-local" id="confirm-date" class="form-control">
+          </div>
+        </div>
+
+        <!-- Payment Screenshot Upload -->
+        <div class="form-group">
+          <label class="form-label">Upload Payment Screenshot Proof (Optional but Recommended)</label>
+          <div class="file-upload-zone" id="file-upload-zone">
+            <div class="upload-icon">📸</div>
+            <p style="font-weight: 600; color: var(--primary-dark); font-size: 0.95rem;">
+              Click here to upload payment screenshot
+            </p>
+            <small style="color: var(--text-muted);">Supports JPG, PNG (Max 5MB)</small>
+            <input type="file" id="screenshot-input" accept="image/*" style="display: none;">
+            
+            <div class="file-preview-area" id="file-preview-area">
+              <img src="" alt="Screenshot Preview" id="file-preview-img" class="file-preview-img">
+              <button type="button" class="remove-file-btn" id="btn-remove-preview" title="Remove Screenshot">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anonymous Checkbox -->
+        <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+          <input type="checkbox" id="confirm-anonymous" style="width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer;">
+          <label for="confirm-anonymous" style="font-size: 0.9rem; color: var(--text-secondary); cursor: pointer;">
+            Keep my name anonymous on the public Donor Wall
+          </label>
+        </div>
+
+        <!-- Optional Message / Prayer -->
+        <div class="form-group">
+          <label for="confirm-message" class="form-label">Message / Prayer for Bappa (Optional)</label>
+          <textarea id="confirm-message" class="form-control" rows="2" placeholder="e.g. Ganpati Bappa Morya! May Bappa bless everyone with peace and good health."></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-block" id="btn-submit-donation" style="font-size: 1.1rem; padding: 14px;">
+          <span>🙏</span> Submit Donation Details
+        </button>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- E-Receipt Modal Overlay -->
+  <div class="receipt-modal-overlay" id="receipt-modal-overlay">
+    <div class="receipt-card">
+      <div style="width: 60px; height: 60px; margin: 0 auto 10px;">
+        <img src="assets/ganesha.svg" alt="Ganesha" style="width: 100%; height: 100%;">
+      </div>
+
+      <div class="receipt-header">
+        <h3 style="font-family: var(--font-heading); color: var(--maroon);">TEAM GAJAKARNA</h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary);">Ganesh Utsav 2026 • Official Donation Acknowledgment</p>
+        <span style="font-size: 0.8rem; background: #E8F5E9; color: #2E7D32; padding: 3px 10px; border-radius: 12px; font-weight: 600; display: inline-block; margin-top: 6px;">
+          Receipt Reference: <span id="r-id">TG-26-000</span>
+        </span>
+      </div>
+
+      <div class="receipt-amount-highlight" id="r-amount">
+        ₹501
+      </div>
+
+      <div class="receipt-details">
+        <div class="receipt-row">
+          <span class="r-label">Donor Name:</span>
+          <span class="r-val" id="r-name">Ramesh Patil</span>
+        </div>
+        <div class="receipt-row">
+          <span class="r-label">Mobile:</span>
+          <span class="r-val" id="r-mobile">98230****45</span>
+        </div>
+        <div class="receipt-row">
+          <span class="r-label">Seva Purpose:</span>
+          <span class="r-val" id="r-category">General Utsav</span>
+        </div>
+        <div class="receipt-row">
+          <span class="r-label">UTR / Ref No:</span>
+          <span class="r-val" id="r-utr">123456789012</span>
+        </div>
+        <div class="receipt-row">
+          <span class="r-label">Date & Time:</span>
+          <span class="r-val" id="r-date">2026-09-08 14:30</span>
+        </div>
+        <div class="receipt-row">
+          <span class="r-label">Verification Status:</span>
+          <span class="r-val" id="r-status" style="color: #F57F17; font-weight: 700;">Under Verification</span>
+        </div>
+      </div>
+
+      <p style="margin: 16px 0 20px; font-size: 0.84rem; color: var(--text-muted); line-height: 1.5;">
+        🙏 <em>Thank you for your noble contribution! Our committee treasurer will verify the transaction with our bank account. Ganpati Bappa Morya!</em>
+      </p>
+
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button type="button" class="btn btn-secondary" id="btn-print-receipt" style="font-size: 0.9rem; padding: 8px 18px;">
+          🖨️ Print Slip
+        </button>
+        <button type="button" class="btn btn-primary" id="btn-close-receipt" style="font-size: 0.9rem; padding: 8px 18px;">
+          Done & Return Home
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer" style="margin-top: 60px;">
+    <div class="footer-bottom" style="border: none; padding: 0;">
+      <span>© 2026 Team Gajakarna Ganesh Utsav Mandal.</span>
+      <a href="donate.html" style="color: #FFE082;">← Back to Scanner / Donate</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/confirmation.js"></script>
+</body>
+</html>

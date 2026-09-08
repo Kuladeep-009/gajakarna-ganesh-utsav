@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="omGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF59D"/>
+      <stop offset="50%" stop-color="#FFB300"/>
+      <stop offset="100%" stop-color="#E65100"/>
+    </linearGradient>
+  </defs>
+  <!-- Sacred Om Symbol -->
+  <path d="M48,22 C42,22 36,25 33,31 C29,39 31,48 37,53 C32,56 27,62 27,70 C27,81 36,90 48,90 C58,90 67,83 69,73 C70,67 68,61 63,57 C68,52 70,45 68,38 C65,28 57,22 48,22 Z M47,30 C52,30 57,33 58,39 C59,44 56,49 51,50 C46,50 42,47 41,42 C40,36 43,30 47,30 Z M48,59 C54,59 59,63 59,70 C59,77 53,82 47,82 C41,82 36,77 36,70 C36,64 41,59 48,59 Z" fill="url(#omGold)"/>
+  <!-- Chandra Bindu -->
+  <path d="M52,14 Q66,16 75,9 Q66,21 52,14 Z" fill="url(#omGold)"/>
+  <circle cx="64" cy="7" r="3.5" fill="url(#omGold)"/>
+  <!-- Tail Accent -->
+  <path d="M55,50 Q75,52 82,38 Q88,24 80,18 Q72,26 75,34 Q70,42 55,42 Z" fill="url(#omGold)"/>
+</svg>

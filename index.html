@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Gajakarna | Ganesh Utsav 2026 Donation Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/ganesha.svg">
+</head>
+<body>
+
+  <!-- Auspicious Top Shloka Bar -->
+  <div class="top-shloka-bar">
+    <img src="assets/diya.svg" alt="Diya" style="width: 20px; height: 20px;">
+    <span class="shloka-text">॥ ॐ गं गणपतये नमः । वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ । निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥</span>
+    <img src="assets/diya.svg" alt="Diya" style="width: 20px; height: 20px;">
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/ganesha.svg" alt="Team Gajakarna Logo" class="brand-icon">
+        <div class="brand-text">
+          <h1>TEAM GAJAKARNA</h1>
+          <span>Ganesh Utsav 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="#about-utsav">About Utsav</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#donor-wall">Donor Wall</a></li>
+        <li><a href="donate.html" class="nav-cta-btn">💰 Donate Now</a></li>
+        <li><a href="login.html" title="Admin Portal" style="font-size: 0.88rem; color: var(--text-muted);">🔐 Admin</a></li>
+      </ul>
+
+      <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="index.html">🏠 Home</a>
+      <a href="#about-utsav">🕉️ About Utsav</a>
+      <a href="#team">👥 Our Team</a>
+      <a href="#donor-wall">📜 Donor Wall</a>
+      <a href="donate.html" style="color: var(--primary); font-weight: 700;">💰 Donate Now</a>
+      <a href="confirmation.html">📝 Submit Payment Details</a>
+      <a href="login.html">🔐 Admin Portal</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Festive Hero Section -->
+    <section class="hero-section">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge" id="public-hero-badge">
+            <span>🙏 श्री गणेशाय नमः • Ganesh Utsav 2026</span>
+          </div>
+          <h2 class="hero-heading" id="public-hero-heading">
+            Celebrate Devotion, Unity & Joy with <span class="highlight">Team Gajakarna</span>
+          </h2>
+          <p class="hero-subtext" id="public-hero-subtitle">
+            Join hands with our community to celebrate the divine arrival of Ganpati Bappa. Your generous contributions support daily Mahapooja, Annadan Mahaprasad, cultural events, and mandal festivities.
+          </p>
+          <div class="hero-ctas">
+            <a href="donate.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 14px 32px;">
+              <span>💰</span> Donate via UPI QR
+            </a>
+            <a href="confirmation.html" class="btn btn-secondary" style="font-size: 1.05rem;">
+              <span>📝</span> Submit Payment Form
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-art-container">
+          <div class="hero-ganesha-wrapper">
+            <img src="assets/ganesha.svg" alt="Lord Ganesha" class="hero-ganesha-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Stats / Highlights Strip -->
+    <div class="container" style="padding-top: 0;">
+      <div class="stats-strip">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3 id="stat-hero-total">₹85,500</h3>
+            <p>Total Raised</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="stat-hero-donors">126</h3>
+            <p>Devotee Donors</p>
+          </div>
+          <div class="stat-item">
+            <h3>10 Days</h3>
+            <p>Divine Celebrations</p>
+          </div>
+          <div class="stat-item">
+            <h3>5,000+</h3>
+            <p>Mahaprasad Seva</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Official Mandal UPI Scanner Section -->
+    <section class="container home-scanner-section" id="scanner-section">
+      <div class="home-scanner-wrapper">
+        
+        <!-- Left: QR Scanner Frame -->
+        <div class="home-scanner-box">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">
+            Official Mandal QR
+          </span>
+          <div class="home-qr-frame">
+            <div id="home-qr-canvas-wrap"></div>
+          </div>
+          <div class="upi-id-pill" id="home-btn-copy-upi" style="font-size: 0.88rem; margin-top: 6px;" title="Click to copy UPI ID">
+            <span>🆔</span>
+            <span id="home-display-upi-id">gajakarna@upi</span>
+            <span style="font-size: 0.72rem; background: var(--bg-subtle); padding: 2px 6px; border-radius: 10px; color: var(--primary);">Copy</span>
+          </div>
+          <small style="color: var(--text-muted); font-size: 0.8rem; margin-top: 6px;">
+            Account: <strong id="home-payee-display" style="color: var(--text-primary);">Team Gajakarna</strong>
+          </small>
+        </div>
+
+        <!-- Right: Information & Payment CTAs -->
+        <div class="home-scanner-content">
+          <span class="section-tag">🙏 Scan & Pay Instantly</span>
+          <h3>Support Ganesh Utsav 2026</h3>
+          <p>
+            Scan our official Mandal UPI QR scanner directly using any payment app on your mobile device. Your contribution directly supports daily Mahapooja, Annadan Mahaprasad, and community festivities.
+          </p>
+
+          <!-- Supported Apps Icons -->
+          <div class="upi-apps-row">
+            <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Accepted Apps:</span>
+            <span class="upi-app-badge">🟢 Google Pay</span>
+            <span class="upi-app-badge">🟣 PhonePe</span>
+            <span class="upi-app-badge">🔵 Paytm</span>
+            <span class="upi-app-badge">🟠 BHIM UPI</span>
+            <span class="upi-app-badge">🏦 Any Bank App</span>
+          </div>
+
+          <!-- Quick Seva Amount Pills -->
+          <div style="margin-bottom: 8px;">
+            <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 8px;">Quick Seva Contribution Presets:</span>
+            <div class="quick-amount-tags">
+              <a href="donate.html?amount=101" class="quick-amt-btn">₹ 101</a>
+              <a href="donate.html?amount=251" class="quick-amt-btn">₹ 251</a>
+              <a href="donate.html?amount=501" class="quick-amt-btn">₹ 501</a>
+              <a href="donate.html?amount=1001" class="quick-amt-btn">₹ 1,001</a>
+              <a href="donate.html?amount=2101" class="quick-amt-btn">₹ 2,101</a>
+              <a href="donate.html?amount=5001" class="quick-amt-btn">₹ 5,001</a>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px;">
+            <a href="confirmation.html" class="btn btn-primary" style="font-size: 0.98rem; padding: 12px 24px;">
+              <span>📝</span> Submit Payment Confirmation
+            </a>
+            <a href="donate.html" class="btn btn-secondary" style="font-size: 0.98rem; padding: 12px 24px;">
+              <span>📱</span> Open Full Scanner Page →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About Ganesh Utsav 2026 -->
+    <section class="container" id="about-utsav">
+      <div class="section-header">
+        <span class="section-tag">Festive Highlights</span>
+        <h2 class="section-title">Utsav Seva & Celebrations</h2>
+        <p class="section-subtitle">Discover how your donations empower our sacred festive initiatives.</p>
+      </div>
+
+      <div class="utsav-details-grid" id="public-utsav-grid">
+        <div class="utsav-card">
+          <div class="utsav-card-icon">🪔</div>
+          <h3>Daily Mahapooja & Aarti</h3>
+          <p>Morning Aarti at 8:00 AM & Evening Aarti at 7:30 PM with Vedic chants, traditional dhol-tasha, and incense sevas.</p>
+        </div>
+
+        <div class="utsav-card">
+          <div class="utsav-card-icon">🍲</div>
+          <h3>Mahaprasad & Annadan</h3>
+          <p>Community feast organized on Chaturthi and Ashtami, feeding thousands of devotees and underprivileged families.</p>
+        </div>
+
+        <div class="utsav-card">
+          <div class="utsav-card-icon">🌺</div>
+          <h3>Eco-Friendly Mandal</h3>
+          <p>100% Shadu clay Bappa idol, organic flower decorations, and zero-waste green immersion process.</p>
+        </div>
+
+        <div class="utsav-card">
+          <div class="utsav-card-icon">🎭</div>
+          <h3>Cultural & Youth Programs</h3>
+          <p>Traditional folk music, Bhajan Sandhya, drawing competitions for children, and felicitation of local talents.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Committee Section -->
+    <section class="container" id="team">
+      <div class="section-header">
+        <span class="section-tag">Organizing Committee</span>
+        <h2 class="section-title">Meet Team Gajakarna</h2>
+        <p class="section-subtitle">Dedicated volunteers committed to transparent, devotional service.</p>
+      </div>
+
+      <div class="team-grid" id="public-team-grid">
+        <div class="team-card">
+          <div class="team-avatar-box">🕉️</div>
+          <h4>Shri. Rajesh Patil</h4>
+          <span class="team-role">President</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar-box">📋</div>
+          <h4>Shri. Sachin Deshmukh</h4>
+          <span class="team-role">Secretary</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar-box">💰</div>
+          <h4>Shri. Nilesh Joshi</h4>
+          <span class="team-role">Treasurer</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar-box">🍲</div>
+          <h4>Shri. Anand Kulkarni</h4>
+          <span class="team-role">Mahaprasad Head</span>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar-box">🚩</div>
+          <h4>Team Volunteers</h4>
+          <span class="team-role">Youth Mandal</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Public Donor Honor Wall -->
+    <section class="container" id="donor-wall">
+      <div class="donor-wall-box">
+        <div class="donor-wall-header">
+          <div>
+            <h3 style="font-size: 1.4rem; color: var(--maroon); font-weight: 800;">🙏 Donor Honor Wall</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Honoring our verified devotees for their noble support</p>
+          </div>
+          <a href="donate.html" class="btn btn-gold" style="font-size: 0.9rem; padding: 8px 20px;">
+            Add Your Name ➕
+          </a>
+        </div>
+
+        <!-- Rendered dynamically by main.js -->
+        <div class="donor-wall-list" id="public-donor-list">
+          <div style="text-align: center; grid-column: 1/-1; padding: 20px; color: var(--text-muted);">
+            Loading verified donors...
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Donation Banner CTA -->
+    <section class="container" style="text-align: center; margin-bottom: 60px;">
+      <div style="background: linear-gradient(135deg, #FFF3E0, #FFE082); border: 2px solid var(--accent-gold); border-radius: var(--radius-lg); padding: 40px 20px;">
+        <h2 style="font-size: 2rem; color: var(--maroon); margin-bottom: 12px;">Support Ganesh Utsav 2026 Today</h2>
+        <p style="color: var(--text-secondary); max-width: 550px; margin: 0 auto 24px;">Scan the official UPI QR code, choose your seva, and receive your verified committee e-acknowledgement slip.</p>
+        <a href="donate.html" class="btn btn-primary" style="font-size: 1.15rem; padding: 14px 36px;">
+          🙏 Donate Now
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <img src="assets/ganesha.svg" alt="Logo" style="width: 32px; height: 32px;">
+          <h4 style="margin: 0; color: #FFE082;">TEAM GAJAKARNA</h4>
+        </div>
+        <p>Ganesh Utsav Mandal registered community organization dedicated to promoting cultural heritage, harmony, and humanitarian sevas.</p>
+        <p style="margin-top: 10px; color: #FFE082;" id="public-contact-address">📍 Ganesh Chowk, Pune, Maharashtra 411002</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="donate.html">Donate via UPI</a></li>
+          <li><a href="confirmation.html">Submit Confirmation Form</a></li>
+          <li><a href="login.html">Admin Login</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Helpline & Contact</h4>
+        <p id="public-contact-helpline">📞 Helpline: +91 98765 43210</p>
+        <p id="public-contact-email">✉️ Email: contact@teamgajakarna.org</p>
+        <p style="margin-top: 12px; font-size: 0.85rem; color: #A1887F;" id="public-contact-hours">Office Hours: 8:00 AM – 9:00 PM IST</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Team Gajakarna Ganesh Utsav Mandal. All rights reserved.</span>
+      <span>Built with devotion for Bappa devotees 🙏</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

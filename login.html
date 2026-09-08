@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Team Gajakarna Ganesh Utsav</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" type="image/svg+xml" href="assets/ganesha.svg">
+</head>
+<body class="login-body">
+
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="assets/ganesha.svg" alt="Team Gajakarna" style="width: 100%; height: 100%;">
+    </div>
+
+    <h2>TEAM GAJAKARNA</h2>
+    <p>Admin Portal • Ganesh Utsav 2026</p>
+
+    <form id="admin-login-form">
+      <div class="form-group" style="text-align: left;">
+        <label for="login-username" class="form-label">Username</label>
+        <input type="text" id="login-username" class="form-control" placeholder="Enter admin username" required autofocus>
+      </div>
+
+      <div class="form-group" style="text-align: left;">
+        <label for="login-password" class="form-label">Password</label>
+        <input type="password" id="login-password" class="form-control" placeholder="Enter password" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top: 12px; padding: 12px;">
+        🔐 Login to Dashboard
+      </button>
+
+      <!-- Quick Demo Credentials -->
+      <div class="login-demo-box">
+        <span>🔑 Demo Credentials:</span><br>
+        User: <code>admin</code> | Pass: <code>bappa2026</code>
+        <button type="button" id="btn-fill-demo" class="btn-fill-demo">Click to auto-fill demo credentials</button>
+      </div>
+    </form>
+
+    <div style="margin-top: 24px; font-size: 0.88rem;">
+      <a href="index.html" style="color: var(--primary-dark); text-decoration: none; font-weight: 500;">
+        ← Return to Public Website
+      </a>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

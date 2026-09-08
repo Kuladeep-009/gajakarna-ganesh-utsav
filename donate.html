@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate via UPI QR | Team Gajakarna Ganesh Utsav 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/ganesha.svg">
+</head>
+<body>
+
+  <!-- Auspicious Top Shloka Bar -->
+  <div class="top-shloka-bar">
+    <img src="assets/diya.svg" alt="Diya" style="width: 20px; height: 20px;">
+    <span class="shloka-text">॥ ॐ श्री गणेशाय नमः । दानेन भूतानि वशीभवन्ति दानेन वैराण्यपि यान्ति नाशम् ॥</span>
+    <img src="assets/diya.svg" alt="Diya" style="width: 20px; height: 20px;">
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/ganesha.svg" alt="Team Gajakarna Logo" class="brand-icon">
+        <div class="brand-text">
+          <h1>TEAM GAJAKARNA</h1>
+          <span>Ganesh Utsav 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about-utsav">About Utsav</a></li>
+        <li><a href="index.html#team">Our Team</a></li>
+        <li><a href="donate.html" class="active">Donate</a></li>
+        <li><a href="confirmation.html">Confirmation Form</a></li>
+        <li><a href="login.html" style="font-size: 0.88rem; color: var(--text-muted);">🔐 Admin</a></li>
+      </ul>
+
+      <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    </div>
+
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="index.html">🏠 Home</a>
+      <a href="donate.html" style="color: var(--primary); font-weight: 700;">💰 Donate</a>
+      <a href="confirmation.html">📝 Submit Confirmation</a>
+      <a href="login.html">🔐 Admin Portal</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-header" style="margin-bottom: 24px;">
+      <span class="section-tag">🙏 Sacred Contribution</span>
+      <h2 class="section-title">Support Ganesh Utsav 2026</h2>
+      <p class="section-subtitle">
+        Scan the dynamic UPI QR code with any payment app (Google Pay, PhonePe, Paytm, BHIM, or Mobile Banking).
+      </p>
+    </div>
+
+    <!-- Donation Main Card -->
+    <div class="donation-wrapper">
+      
+      <!-- Left Column: Dynamic QR Scanner -->
+      <div class="donation-left">
+        <span style="font-size: 0.85rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">
+          Official Mandal QR
+        </span>
+
+        <div class="qr-frame-box">
+          <div id="qrcode-canvas-wrap"></div>
+          <div id="qr-amount-indicator" style="margin-top: 10px; font-weight: 800; font-size: 1.1rem; color: var(--maroon);">
+            ₹501
+          </div>
+        </div>
+
+        <!-- UPI ID with Copy Button -->
+        <div class="upi-id-pill" id="btn-copy-upi" title="Click to copy UPI ID">
+          <span>🆔</span>
+          <span id="display-upi-id">gajakarna@upi</span>
+          <span style="font-size: 0.75rem; background: var(--bg-subtle); padding: 2px 8px; border-radius: 12px; color: var(--primary);">Copy</span>
+        </div>
+
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 8px;">
+          Verified Account: <strong id="display-payee-name" style="color: var(--text-primary);">Team Gajakarna</strong>
+        </p>
+
+        <!-- Mobile UPI App Direct Link -->
+        <a href="upi://pay" id="btn-pay-upi-app" class="btn btn-secondary" style="margin-top: 16px; font-size: 0.9rem; padding: 8px 18px; border-radius: 50px;">
+          📲 Open UPI App on Mobile
+        </a>
+      </div>
+
+      <!-- Right Column: Amount Selection & Next Steps -->
+      <div class="donation-right">
+        <h3 style="font-size: 1.3rem; color: var(--maroon); margin-bottom: 6px;">Select Donation Amount</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 12px;">
+          Choose an auspicious contribution amount or enter your custom amount:
+        </p>
+
+        <!-- Preset Amount Pills -->
+        <div class="preset-amounts-grid">
+          <button type="button" class="preset-btn" data-amount="101">₹ 101</button>
+          <button type="button" class="preset-btn" data-amount="251">₹ 251</button>
+          <button type="button" class="preset-btn active" data-amount="501">₹ 501</button>
+          <button type="button" class="preset-btn" data-amount="1001">₹ 1,001</button>
+          <button type="button" class="preset-btn" data-amount="2101">₹ 2,101</button>
+          <button type="button" class="preset-btn" data-amount="5001">₹ 5,001</button>
+        </div>
+
+        <!-- Custom Amount -->
+        <label for="custom-amount-input" class="form-label" style="margin-top: 8px;">Or Enter Custom Amount (₹)</label>
+        <div class="custom-amount-input">
+          <span class="currency-symbol">₹</span>
+          <input type="number" id="custom-amount-input" min="1" placeholder="Enter custom amount">
+        </div>
+
+        <!-- Next Action Button -->
+        <button type="button" id="btn-proceed-confirm" class="btn btn-primary btn-block" style="font-size: 1.05rem; padding: 14px 20px;">
+          Proceed to Payment Confirmation Form 📝
+        </button>
+
+        <!-- 3-Step Simple Guide -->
+        <div class="pay-steps-box">
+          <div class="pay-step">
+            <span class="step-num">1</span>
+            <span>Scan the QR code using Google Pay, PhonePe, Paytm, or BHIM and complete payment.</span>
+          </div>
+          <div class="pay-step">
+            <span class="step-num">2</span>
+            <span>Note down the 12-digit <strong>UTR / UPI Transaction ID</strong> and take a screenshot.</span>
+          </div>
+          <div class="pay-step">
+            <span class="step-num">3</span>
+            <span>Fill the confirmation form to receive your verified digital receipt and donor acknowledgment.</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer" style="margin-top: 60px;">
+    <div class="footer-bottom" style="border: none; padding: 0;">
+      <span>© 2026 Team Gajakarna Ganesh Utsav Mandal. All rights reserved.</span>
+      <a href="confirmation.html" style="color: #FFE082;">Already Paid? Submit Confirmation Form →</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/donate.js"></script>
+</body>
+</html>

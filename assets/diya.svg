@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <radialGradient id="flameGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF9C4" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#FFEB3B" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#FF9800" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#F44336" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="clayGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D84315"/>
+      <stop offset="50%" stop-color="#BF360C"/>
+      <stop offset="100%" stop-color="#870000"/>
+    </linearGradient>
+    <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="50%" stop-color="#FFB300"/>
+      <stop offset="100%" stop-color="#FFE082"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Flame Aura -->
+  <circle cx="50" cy="32" r="28" fill="url(#flameGlow)"/>
+
+  <!-- Flame Outer -->
+  <path d="M50,12 C55,24 62,32 58,42 C54,50 46,50 42,42 C38,32 45,24 50,12 Z" fill="#FF9800"/>
+  <!-- Flame Core -->
+  <path d="M50,20 C53,28 56,34 54,40 C52,44 48,44 46,40 C44,34 47,28 50,20 Z" fill="#FFFDE7"/>
+
+  <!-- Diya Clay Base -->
+  <path d="M15,50 Q50,92 85,50 Q92,68 80,82 Q50,96 20,82 Q8,68 15,50 Z" fill="url(#clayGrad)"/>
+  <!-- Rim -->
+  <ellipse cx="50" cy="52" rx="36" ry="8" fill="url(#goldRim)"/>
+  <!-- Diya Oil reservoir -->
+  <ellipse cx="50" cy="53" rx="31" ry="5.5" fill="#E65100"/>
+  
+  <!-- Base Stand -->
+  <path d="M40,86 L60,86 L65,92 L35,92 Z" fill="#BF360C"/>
+</svg>

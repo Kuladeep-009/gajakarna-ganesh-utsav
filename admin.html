@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Team Gajakarna Ganesh Utsav 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" type="image/svg+xml" href="assets/ganesha.svg">
+</head>
+<body class="admin-body">
+
+  <!-- Admin Sticky Navigation Bar -->
+  <nav class="admin-navbar">
+    <div class="admin-nav-brand">
+      <img src="assets/ganesha.svg" alt="Logo" style="width: 32px; height: 32px;">
+      <span style="font-weight: 700; font-size: 1.1rem; letter-spacing: 0.5px;">TEAM GAJAKARNA</span>
+      <span class="admin-badge">Admin Console</span>
+    </div>
+
+    <div class="admin-user-menu">
+      <a href="index.html" class="btn-nav-outline" target="_blank">
+        🌐 View Public Site
+      </a>
+      <button type="button" class="btn-nav-outline" id="btn-open-settings">
+        ⚙️ QR / UPI Settings
+      </button>
+      <button type="button" class="btn-logout" id="btn-admin-logout">
+        🚪 Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- Admin Navigation Tabs -->
+  <div class="admin-tabs-nav">
+    <button type="button" class="admin-tab-btn active" data-tab="tab-donations">
+      📊 Donations & Records
+    </button>
+    <button type="button" class="admin-tab-btn" data-tab="tab-cms">
+      🌐 Edit Website Content (CMS)
+    </button>
+    <button type="button" class="admin-tab-btn" data-tab="tab-settings">
+      ⚙️ Payment & QR Settings
+    </button>
+  </div>
+
+  <!-- Main Admin Dashboard Container -->
+  <div class="admin-container">
+
+    <!-- ====================================================================
+         TAB 1: DONATIONS MANAGEMENT
+         ==================================================================== -->
+    <div class="admin-tab-pane active" id="tab-donations">
+
+      <!-- Backend Mode Indicator (Demo vs Live) -->
+      <div id="backend-mode-badge"></div>
+
+      <!-- Header & Action Row -->
+      <div class="dash-header">
+        <div>
+          <h2>Donations & Utsav Records</h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            Track devotee payments, verify bank UTRs, and manage donor acknowledgements.
+          </p>
+        </div>
+
+        <div class="dash-actions">
+          <button type="button" class="btn btn-secondary" id="btn-print-admin" style="font-size: 0.9rem; padding: 9px 18px;">
+            🖨️ Print Summary
+          </button>
+          <button type="button" class="btn btn-primary" id="btn-export-csv" style="font-size: 0.9rem; padding: 9px 18px;">
+            📥 Export CSV
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Metric Cards Grid -->
+      <div class="kpi-grid">
+        <div class="kpi-card kpi-total">
+          <div class="kpi-icon">💰</div>
+          <div class="kpi-content">
+            <h4>Total Collection</h4>
+            <div class="kpi-val" id="kpi-total-val">₹0</div>
+          </div>
+        </div>
+
+        <div class="kpi-card kpi-donors">
+          <div class="kpi-icon">👥</div>
+          <div class="kpi-content">
+            <h4>Verified Donors</h4>
+            <div class="kpi-val" id="kpi-donors-val">0</div>
+          </div>
+        </div>
+
+        <div class="kpi-card kpi-today">
+          <div class="kpi-icon">📅</div>
+          <div class="kpi-content">
+            <h4>Today's Collection</h4>
+            <div class="kpi-val" id="kpi-today-val">₹0</div>
+          </div>
+        </div>
+
+        <div class="kpi-card kpi-pending">
+          <div class="kpi-icon">⏳</div>
+          <div class="kpi-content">
+            <h4>Pending Verification</h4>
+            <div class="kpi-val" id="kpi-pending-val">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters & Search Control Bar -->
+      <div class="table-controls-card">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="admin-search-input" placeholder="Search by Donor Name, Mobile, UTR, or ID...">
+        </div>
+
+        <div class="filters-row">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block;">Status:</label>
+            <select id="admin-filter-status" class="filter-select">
+              <option value="All">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Verified">Verified</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block;">Category:</label>
+            <select id="admin-filter-category" class="filter-select">
+              <option value="All">All Categories</option>
+              <option value="General Utsav">General Utsav</option>
+              <option value="Mahaprasad Seva">Mahaprasad Seva</option>
+              <option value="Flower Decoration">Flower Decoration</option>
+              <option value="Aarti Sponsorship">Aarti Sponsorship</option>
+              <option value="Cultural Programs">Cultural Programs</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donation Records Table -->
+      <div class="table-card">
+        <div style="padding: 12px 20px; border-bottom: 1px solid #EEE; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-weight: 600; font-size: 0.92rem; color: var(--text-secondary);" id="admin-record-count">Loading records...</span>
+          <small style="color: var(--text-muted);">Tip: Click screenshot thumbnail to zoom proof</small>
+        </div>
+
+        <div class="table-responsive">
+          <table class="donation-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date & Time</th>
+                <th>Donor Name</th>
+                <th>Mobile</th>
+                <th>Amount</th>
+                <th>Seva Category</th>
+                <th>UTR / Ref No</th>
+                <th style="text-align: center;">Proof</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="donation-table-body">
+              <!-- Rendered by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         TAB 2: EDIT WEBSITE CONTENT (CMS)
+         ==================================================================== -->
+    <div class="admin-tab-pane" id="tab-cms">
+      <div class="dash-header">
+        <div>
+          <h2>🌐 Public Website Content Editor</h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            Edit all public website titles, festival dates, Aarti timings, and committee roster. Changes reflect immediately on the live website.
+          </p>
+        </div>
+        <div class="dash-actions">
+          <a href="index.html" target="_blank" class="btn btn-secondary" style="font-size: 0.9rem; padding: 9px 18px;">
+            👁️ Preview Website
+          </a>
+        </div>
+      </div>
+
+      <form id="cms-editor-form">
+
+        <!-- 1. Top Shloka Bar -->
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>📜 1. Top Announcement & Sanskrit Shloka Bar</h3>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Shown on the very top of all pages</span>
+          </div>
+          <div class="cms-card-body">
+            <div class="form-group">
+              <label class="form-label">Top Banner Text / Shloka</label>
+              <textarea id="cms-top-shloka" class="form-control" rows="2" required></textarea>
+              <small style="color: var(--text-muted); font-size: 0.78rem;">e.g. Sanskrit prayer, darshan timings announcement, or festive greetings.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Hero Section -->
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>🚩 2. Hero Banner & Festival Information</h3>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Main section visitors see first</span>
+          </div>
+          <div class="cms-card-body">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Top Badge / Tagline</label>
+                <input type="text" id="cms-hero-badge" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Festival Dates</label>
+                <input type="text" id="cms-festival-dates" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Heading Prefix</label>
+                <input type="text" id="cms-hero-prefix" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Heading Highlight (Gold)</label>
+                <input type="text" id="cms-hero-highlight" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Hero Description / Invitation Text</label>
+              <textarea id="cms-hero-subtitle" class="form-control" rows="3" required></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Utsav Seva & Aarti Schedule Cards -->
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>🪔 3. Utsav Seva & Event Highlights (4 Schedule Cards)</h3>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Aarti times, Mahaprasad, Green Visarjan, Cultural</span>
+          </div>
+          <div class="cms-card-body">
+            <div class="form-row-2">
+              <!-- Card 1 -->
+              <div class="form-group" style="background: #FFFDF9; border: 1px solid #FFE4CC; padding: 14px; border-radius: 8px;">
+                <label class="form-label">🪔 Card 1: Aarti & Mahapooja</label>
+                <input type="text" id="cms-card1-title" class="form-control" style="margin-bottom: 8px;" placeholder="Card Title" required>
+                <textarea id="cms-card1-desc" class="form-control" rows="3" placeholder="Description & timings" required></textarea>
+              </div>
+              <!-- Card 2 -->
+              <div class="form-group" style="background: #FFFDF9; border: 1px solid #FFE4CC; padding: 14px; border-radius: 8px;">
+                <label class="form-label">🍲 Card 2: Mahaprasad & Annadan</label>
+                <input type="text" id="cms-card2-title" class="form-control" style="margin-bottom: 8px;" placeholder="Card Title" required>
+                <textarea id="cms-card2-desc" class="form-control" rows="3" placeholder="Description & days" required></textarea>
+              </div>
+            </div>
+
+            <div class="form-row-2" style="margin-top: 12px;">
+              <!-- Card 3 -->
+              <div class="form-group" style="background: #FFFDF9; border: 1px solid #FFE4CC; padding: 14px; border-radius: 8px;">
+                <label class="form-label">🌺 Card 3: Mandal & Decoration</label>
+                <input type="text" id="cms-card3-title" class="form-control" style="margin-bottom: 8px;" placeholder="Card Title" required>
+                <textarea id="cms-card3-desc" class="form-control" rows="3" placeholder="Description" required></textarea>
+              </div>
+              <!-- Card 4 -->
+              <div class="form-group" style="background: #FFFDF9; border: 1px solid #FFE4CC; padding: 14px; border-radius: 8px;">
+                <label class="form-label">🎭 Card 4: Cultural & Youth Seva</label>
+                <input type="text" id="cms-card4-title" class="form-control" style="margin-bottom: 8px;" placeholder="Card Title" required>
+                <textarea id="cms-card4-desc" class="form-control" rows="3" placeholder="Description" required></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Committee Members Section -->
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>👥 4. Organizing Committee Members</h3>
+            <button type="button" class="btn btn-secondary" id="btn-add-committee-row" style="font-size: 0.85rem; padding: 6px 14px;">
+              ➕ Add Member
+            </button>
+          </div>
+          <div class="cms-card-body">
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 14px;">
+              Manage the organizing committee cards displayed on the public home page.
+            </p>
+            <div id="cms-committee-container" class="cms-members-list">
+              <!-- Dynamically populated by admin.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Venue, Contact & Helpline Info -->
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>📍 5. Venue, Helpline & Contact Info</h3>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Footer & Mandir office details</span>
+          </div>
+          <div class="cms-card-body">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Mandal Address / Location</label>
+                <input type="text" id="cms-contact-address" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Helpline Phone Number</label>
+                <input type="text" id="cms-contact-helpline" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Contact Email</label>
+                <input type="email" id="cms-contact-email" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Office & Darshan Hours</label>
+                <input type="text" id="cms-contact-hours" class="form-control" required>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Actions Bar -->
+        <div class="cms-actions-bar">
+          <button type="button" class="btn-tbl-action" id="btn-reset-cms-default" style="color: #C62828;">
+            🔄 Reset All to Default
+          </button>
+          <div style="display: flex; gap: 12px;">
+            <a href="index.html" target="_blank" class="btn btn-secondary">
+              👁️ Preview Changes
+            </a>
+            <button type="submit" class="btn btn-primary" style="padding: 12px 28px;">
+              💾 Save Website Content
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- ====================================================================
+         TAB 3: PAYMENT & QR SETTINGS
+         ==================================================================== -->
+    <div class="admin-tab-pane" id="tab-settings">
+      <div class="dash-header">
+        <div>
+          <h2>⚙️ Payment & UPI QR Settings</h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            Configure your Mandal's UPI ID, Payee Name, default payment notes, and Google Sheets connection.
+          </p>
+        </div>
+      </div>
+
+      <div class="cms-card" style="max-width: 780px;">
+        <div class="cms-card-header">
+          <h3>💳 Mandal UPI Details</h3>
+        </div>
+        <div class="cms-card-body">
+          <form id="tab-settings-form">
+            <div class="form-group">
+              <label class="form-label">Mandal Official UPI ID</label>
+              <input type="text" id="tab-setting-upi-id" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Payee / Account Name</label>
+              <input type="text" id="tab-setting-payee-name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Default UPI Note / Transaction Remark</label>
+              <input type="text" id="tab-setting-default-note" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Mandal UPI Scanner / QR Code Image</label>
+              
+              <!-- Drag and Drop / Upload Dropzone -->
+              <div class="qr-dropzone" id="tab-qr-dropzone">
+                <div style="font-size: 2.2rem; margin-bottom: 6px;">📷</div>
+                <p style="font-weight: 600; color: var(--primary-dark); font-size: 0.95rem; margin-bottom: 4px;">
+                  Click to upload or Drag & Drop Mandal QR Scanner Image
+                </p>
+                <small style="color: var(--text-muted);">
+                  Supports JPG, PNG, WebP. Displayed on public donation page.
+                </small>
+                <input type="file" id="tab-qr-file-input" accept="image/*" style="display: none;">
+              </div>
+
+              <!-- Uploaded QR Preview Card -->
+              <div class="qr-preview-box" id="tab-qr-preview-box" style="display: none;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                  <img src="" alt="Scanner Preview" id="tab-qr-preview-img" style="width: 72px; height: 72px; object-fit: contain; border-radius: 8px; border: 1.5px solid #DDD; background: #FFF; padding: 2px;">
+                  <div>
+                    <strong style="color: var(--primary-dark); font-size: 0.95rem; display: block;">Mandal Scanner Image Active</strong>
+                    <small style="color: #2E7D32; font-weight: 600;">✓ Ready for public donation page</small>
+                  </div>
+                </div>
+                <button type="button" class="btn-tbl-action btn-del" id="tab-btn-remove-qr" title="Remove custom scanner image and restore dynamic QR generator">
+                  🗑️ Remove Scanner
+                </button>
+              </div>
+
+              <input type="hidden" id="tab-setting-custom-qr">
+
+              <div style="margin-top: 8px;">
+                <details style="font-size: 0.82rem; color: var(--text-muted); cursor: pointer;">
+                  <summary>Or paste an image URL instead</summary>
+                  <input type="url" id="tab-setting-custom-qr-url" class="form-control" placeholder="https://example.com/mandal-scanner.png" style="margin-top: 6px; font-size: 0.85rem;">
+                </details>
+              </div>
+            </div>
+
+            <hr style="margin: 24px 0; border: none; border-top: 1px solid #EEE;">
+
+            <div class="form-group">
+              <label class="form-label">Google Apps Script Web App URL (Live Database)</label>
+              <input type="url" id="tab-setting-appscript-url" class="form-control" placeholder="https://script.google.com/macros/s/.../exec">
+              <small style="color: var(--text-muted); font-size: 0.78rem;">
+                Leave blank for <strong>Local Demo Mode</strong>. Paste your Apps Script deployment URL to connect live Google Sheets!
+              </small>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 12px; padding: 12px 28px;">
+              💾 Save Payment Settings
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal: Edit Donation Record -->
+  <div class="admin-modal-overlay" id="edit-record-modal">
+    <div class="admin-modal-box">
+      <div class="admin-modal-header">
+        <h3 id="edit-modal-title">Edit Donation Record</h3>
+        <button type="button" class="close-modal-btn" onclick="closeEditModal()">✕</button>
+      </div>
+
+      <form id="admin-edit-record-form">
+        <div class="admin-modal-body">
+          <input type="hidden" id="edit-record-id">
+
+          <div class="form-group">
+            <label class="form-label">Verification Status</label>
+            <select id="edit-status" class="form-control" style="font-weight: 700;">
+              <option value="Pending">Pending</option>
+              <option value="Verified">Verified (Bank Confirmed)</option>
+              <option value="Rejected">Rejected (Invalid/Failed)</option>
+            </select>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">Donor Name</label>
+              <input type="text" id="edit-name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mobile Number</label>
+              <input type="tel" id="edit-mobile" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label">Amount (₹)</label>
+              <input type="number" id="edit-amount" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select id="edit-category" class="form-control">
+                <option value="General Utsav">General Utsav</option>
+                <option value="Mahaprasad Seva">Mahaprasad Seva</option>
+                <option value="Flower Decoration">Flower Decoration</option>
+                <option value="Aarti Sponsorship">Aarti Sponsorship</option>
+                <option value="Cultural Programs">Cultural Programs</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Transaction ID / UTR</label>
+            <input type="text" id="edit-utr" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Admin Notes / Remarks</label>
+            <textarea id="edit-notes" class="form-control" rows="3" placeholder="e.g. Verified with HDFC Bank Statement on 08-09-2026"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Screenshot Proof Lightbox -->
+  <div class="admin-modal-overlay" id="lightbox-modal">
+    <div class="admin-modal-box lightbox-modal" style="max-width: 720px;">
+      <div class="admin-modal-header">
+        <h3 id="lightbox-caption">Payment Proof</h3>
+        <button type="button" class="close-modal-btn" onclick="closeLightbox()">✕</button>
+      </div>
+      <div class="admin-modal-body" style="padding: 16px;">
+        <img src="" alt="Proof Preview" id="lightbox-img" class="lightbox-img">
+      </div>
+      <div class="admin-modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeLightbox()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Payment & QR Settings -->
+  <div class="admin-modal-overlay" id="settings-modal">
+    <div class="admin-modal-box">
+      <div class="admin-modal-header">
+        <h3>⚙️ Payment & QR Settings</h3>
+        <button type="button" class="close-modal-btn" onclick="closeSettingsModal()">✕</button>
+      </div>
+
+      <form id="settings-form">
+        <div class="admin-modal-body">
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px;">
+            Changes here automatically update the public UPI QR code and payment instructions on <code>donate.html</code>.
+          </p>
+
+          <div class="form-group">
+            <label class="form-label">Mandal UPI ID</label>
+            <input type="text" id="setting-upi-id" class="form-control" placeholder="e.g. gajakarna@upi" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Account / Payee Name</label>
+            <input type="text" id="setting-payee-name" class="form-control" placeholder="e.g. Team Gajakarna" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Default UPI Note / Transaction Remark</label>
+            <input type="text" id="setting-default-note" class="form-control" placeholder="e.g. Ganesh Utsav 2026 Donation">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mandal UPI Scanner / QR Code Image</label>
+            
+            <div class="qr-dropzone" id="modal-qr-dropzone">
+              <div style="font-size: 2rem; margin-bottom: 4px;">📷</div>
+              <p style="font-weight: 600; color: var(--primary-dark); font-size: 0.92rem; margin-bottom: 2px;">
+                Click to upload or Drag & Drop QR Scanner
+              </p>
+              <small style="color: var(--text-muted);">Supports JPG, PNG, WebP</small>
+              <input type="file" id="modal-qr-file-input" accept="image/*" style="display: none;">
+            </div>
+
+            <div class="qr-preview-box" id="modal-qr-preview-box" style="display: none;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="" alt="Scanner Preview" id="modal-qr-preview-img" style="width: 60px; height: 60px; object-fit: contain; border-radius: 6px; border: 1px solid #DDD; background: #FFF;">
+                <div>
+                  <strong style="color: var(--primary-dark); font-size: 0.9rem; display: block;">Scanner Image Active</strong>
+                  <small style="color: #2E7D32; font-weight: 600;">✓ Ready</small>
+                </div>
+              </div>
+              <button type="button" class="btn-tbl-action btn-del" id="modal-btn-remove-qr" title="Remove Scanner">
+                🗑️ Remove
+              </button>
+            </div>
+
+            <input type="hidden" id="setting-custom-qr">
+          </div>
+
+          <hr style="margin: 20px 0; border: none; border-top: 1px solid #EEE;">
+
+          <div class="form-group">
+            <label class="form-label">Google Apps Script Web App URL</label>
+            <input type="url" id="setting-appscript-url" class="form-control" placeholder="https://script.google.com/macros/s/.../exec">
+            <small style="color: var(--text-muted); font-size: 0.78rem;">
+              Leave blank to run in <strong>Local Demo Mode</strong>. Paste your deployed Web App URL here to sync live with Google Sheets!
+            </small>
+          </div>
+
+          <div style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed #DDD;">
+            <button type="button" class="btn-tbl-action" id="btn-reset-demo-data" style="color: #C62828;">
+              🔄 Reset Demo Records
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeSettingsModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
